@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.suxinwei.authcode">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.suxinwei.authcode">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,40 +16,47 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity"/>
+        <activity android:name=".SecondActivity" />
 
         <activity android:name=".ThirdActivity">
             <intent-filter>
                 <!-- action可以自定义 -->
-                <action android:name="com.itheima.myaction"/>
+                <action android:name="com.itheima.myaction" />
                 <!-- 不能自定义,必须使用系统提供的常量 -->
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity android:name=".FourthActivity">
             <intent-filter>
-                <action android:name="com.itheima.action.Fourth"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.itheima.action.Fourth" />
+                <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:scheme="itheima"/>
-                <data android:mimeType="text/html"/>
+                <data android:scheme="itheima" />
+                <data android:mimeType="text/html" />
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.example.ipcaller.IPBroadCastReceiver">
-            <!-- 添加一个意图过滤器,不然过滤不到Intent,因为广播的发送其实就是发送的Intent -->
+        <service android:name=".service.MusicService" />
+
+        <activity android:name="com.alibaba.alipay.PayActivity" />
+
+        <service
+            android:name="com.alibaba.alipay.PayService"
+            android:exported="true">
+            <!--定义可被其它应用使用该服务，定义意图-->
             <intent-filter>
-                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="com.alibaba.alipay.THIRD_PART_PAY" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </receiver>
-        <service android:name=".service.MusicService"/>
+
+        </service>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class MainActivity extends Activity {
         initNetReceiver();
 
         initMusicService();
+
+        Log.e("sxw", "main被启动");
     }
 
     private void initNetReceiver() {
